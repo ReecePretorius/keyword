@@ -1,35 +1,33 @@
 # keyword
 A keyword in context program written in python
 
-///////////////////////////
+
 Given an input of the form:
-///////////////////////////
 
-2 
-:: 
-of 
-and 
-the 
-too 
-on 
-who 
-to 
-that 
-:: 
-that fortune 
-sense and sensibility 
-life of robert browning 
-the man who knew too much 
-legend of montrose 
-visit to iceland 
-orthodoxy 
-the mountains 
-on the track 
-ward of king canute
+  2 
+  :: 
+  of 
+  and 
+  the 
+  too 
+  on 
+  who 
+  to 
+  that 
+  :: 
+  that fortune 
+  sense and sensibility 
+  life of robert browning 
+  the man who knew too much 
+  legend of montrose 
+  visit to iceland 
+  orthodoxy 
+  the mountains 
+  on the track 
+  ward of king canute
 
-//////////////////////////////////////////////////
+
 kwic2 takes the input and formats it to look like:
-//////////////////////////////////////////////////
 
               life of robert BROWNING
                 ward of king CANUTE
