@@ -4,8 +4,8 @@ import sys
 import string
 
 def get_data():
-    _read = [line.strip() for line in sys.stdin.readlines()]
-    data = [l.split(',') for l in ','.join(_read).split('::')]
+    read_lines = [line.strip() for line in sys.stdin.readlines()]
+    data = [l.split(',') for l in ','.join(read_lines).split('::')]
     return(data)
 
 def get_keywords(phrases, exclude):
@@ -27,31 +27,33 @@ def sort_phrases(keywords, phrases):
         for j in range(len(phrases)):
             phrase = phrases[j]
             if(key in phrase):
-                temp = phrases[j].split()
-                ind = temp.index(keywords[i])
-                temp[ind] = temp[ind].upper()
+                words = phrases[j].split()
+                ind = words.index(keywords[i])
+                words[ind] = words[ind].upper()
                 
-                temp2 = temp[0:ind]
-                temp3 = ' '.join(temp2)
-                temp4 = temp[ind + 1:]
-                temp5 = ' '.join(temp4).strip()
-                if(not temp5):
-                    print('{:>29} {:<}'.format(temp3, temp[ind]))
+                left_words = words[0:ind]
+                left_string = ' '.join(left_words)
+                right_words = words[ind + 1:]
+                right_string = ' '.join(right_words).strip()
+                if(not right_string):
+                    print('{:>29} {:<}'.format(left_string, words[ind]))
                 else:
-                    print('{:>29} {:} {:<}'.format(temp3, temp[ind], temp5))
+                    print('{:>29} {:} {:<}'.format(left_string, words[ind], right_string))
 
 def main():
     data = get_data()
+    
     exclude = data[1]
     exclude.remove('')
+    
     phrases = data[2]
     phrases.remove('')
 
     keywords = get_keywords(phrases, exclude)
-    keywords_ = sorted(set(keywords), key = lambda x:keywords.index(x))
-    keywords_.sort()
+    keywords_sorted = sorted(set(keywords), key = lambda x:keywords.index(x))
+    keywords_sorted.sort()
 
-    sort_phrases(keywords_, phrases)
+    sort_phrases(keywords_sorted, phrases)
 
 if __name__ == '__main__':
     main()
